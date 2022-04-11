@@ -17,6 +17,17 @@ const Input = styled.input`
   background: #fff;
   box-sizing: border-box;
 `;
+const Input = styled.input`
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 40px;
+  margin: 0 0 8px;
+  padding: 5px 39px 5px 11px;
+  border: solid 1px #dadada;
+  background: #fff;
+  box-sizing: border-box;
+`;
 
 const Button = styled.div`
   font-size: 18px;
