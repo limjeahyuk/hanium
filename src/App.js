@@ -1,9 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import LoginForm from './login/login';
+import Signup from './components/Signup';
+import React from 'react';
+
 
 function App() {
-  return <LoginForm />;
+  return <Signup />;
 }
 
 export default App;
