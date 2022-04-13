@@ -26,14 +26,13 @@ function Login_r() {
   // login 버튼 클릭 이벤트
   const onClickLogin = () => {
     console.log('click');
-    axios
-      .post('/login', null, {
-        params: {
-          username: inputId,
-          password: inputPw,
-        },
-      })
-      .then(function (response) {
+    axios({
+      url: 'http://jfox.site/college-mate/login',
+      method: 'post',
+      data: null,
+      params: { username: inputId, password: inputPw },
+    })
+      .then(function a(response) {
         console.log(response);
       })
       .catch(function (error) {
