@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
+
 import TextField from '@mui/material/TextField';
+
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import axios from 'axios';
 
 function Signup() {
-    const [name, setName] = useState("");
+    const [username, setUserName] = useState("");
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [email, setEmail] = useState('')
@@ -12,7 +18,7 @@ function Signup() {
     const [phone, setPhone] = useState('');
 
     // 오류메시지 상태저장
-    const [nameMessage, setNameMessage] = useState("");
+    const [userNameMessage, setUserNameMessage] = useState("");
     const [passwordMessage, setPasswordMessage] = useState('')
     const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('')
     const [emailMessage, setEmailMessage] = useState('')
@@ -20,7 +26,7 @@ function Signup() {
     const [phoneMessage, setPhoneMessage] = useState('')
 
     // 유효성 검사
-    const [isName, setIsName] = useState(false);
+    const [isUserName, setIsUserName] = useState(false);
     const [isPassword, setIsPassword] = useState(false)
     const [isPasswordConfirm, setIsPasswordConfirm] = useState(false)
     const [isEmail, setIsEmail] = useState(false)
@@ -30,13 +36,13 @@ function Signup() {
 
     // 이름
     const onChangeName = (event) => {
-        setName(event.target.value)
+        setUserName(event.target.value)
         if (event.target.value.length < 2 || event.target.value.length > 5) {
-            setNameMessage('2글자 이상 5글자 미만으로 입력해주세요.')
-            setIsName(false)
+            setUserNameMessage('2글자 이상 5글자 미만으로 입력해주세요.')
+            setIsUserName(false)
         } else {
-            setNameMessage('올바른 이름 형식입니다')
-            setIsName(true)
+            setUserNameMessage('올바른 이름 형식입니다')
+            setIsUserName(true)
         }
     }
 
@@ -86,9 +92,16 @@ function Signup() {
     }
 
     //대학 드롭다운
+    // defaultValue={selectList.map((college_email)=> ({college_email}))}
+    const selectList = [{ college_name:"대림", college_email:"emali.daelim.ac.kr"},{college_name: "연성", college_email:"email.email"},{college_name: "안양", college_email: "email"}];
+    // const selectList = ["대림","안양","연성"]
     const handleChange = event => {
         setCollege_name(event.target.value);
     };
+
+    const MuiMenuItem = React.forwardRef((props, ref) => {
+        return <MenuItem  ref={ref} {...props} />;
+      });
 
     //핸드폰 번호
     const handlePress = (e) => {
@@ -111,16 +124,17 @@ function Signup() {
         }
       }, [phone]);
 
+    // 값 보내주기
     const onSubmit = async e => {
         e.preventDefault()
         try {
             await axios
             .post('',{
-                username: name,
-                password: password,
-                college_name: college_name,
-                email: email,
-                phone: phone
+                username : "username",
+                password : "password",
+                college_name : "college_name", 
+                email : "email",
+                phone : "phone"
             })
             .then((res) => {
                 console.log('response:', res)
@@ -139,11 +153,11 @@ function Signup() {
                 <h3>회원가입</h3>
             </div>
             <div>
-                <TextField id="standard-basic" label="아이디" name="username" onChange={onChangeName} />
-                {name.length > 0 && <span className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
+                <TextField id="standard-basic" label="아이디" name="username" onChange={onChangeName} value={username} />
+                {username.length > 0 && <span className={`message ${isUserName ? 'success' : 'error'}`}>{userNameMessage}</span>}
             </div>
             <div>
-                <TextField id="standard-password-input" label="비밀번호" type="password" name="password" placeholder='숫자,영문자,특수문자 조합으로 10자리 이상' onChange={onChangePassword}/>
+                <TextField id="standard-password-input" label="비밀번호" type="password" name="password" placeholder='' onChange={onChangePassword} value={password}/>
                 {password.length > 0 && (
                     <span className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>
                 )}
@@ -155,33 +169,34 @@ function Signup() {
                 )}
             </div> 
             <div>
-                <Select
-                    labelId="demo-simple-select-disabled-label"
-                    id="demo-simple-select-disabled"
-                    value={college_name}
-                    label="college_name"
-                    onChange={handleChange}
-                    name="college_name"
-                    >
-                    <MenuItem value="">
-                        대림대학교
-                    </MenuItem>
-                    <MenuItem value={10}>대림대학교</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
+                <FormControl required sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="demo-simple-select-required-label">대학</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-required-label"
+                        id="demo-simple-select-required-label"
+                        value={college_name}
+                        label="college_name"
+                        onChange={handleChange}
+                        name="college_name"
+                        >
+                        {selectList.map((college_name)=> (
+                            <MenuItem value={college_name}>{college_name}</MenuItem>
+                        ))}
+                    </Select>
+                    <FormHelperText>필수 조건입니다</FormHelperText>
+                </FormControl>
             </div>
             <div>
-                <TextField id="standard-basic" label="이메일" name="email" onChange={onChangeEmail} />
+                <TextField id="standard-basic" label="이메일" name="email" onChange={onChangeEmail} value={email} />
                 {email.length > 0 && <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
-                <button type='submit'>이메일 인증</button>
+                <button type='submit' className='emali_button' disabled>이메일 인증</button>
             </div>
             <div>
                 <TextField id="standard-basic" label="전화번호" name="phone" onChange={handlePress} value={phone} />
                 {phone.length > 0 && <span className={`message ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>}
             </div>
             <div>
-                <button type='submit' className='button' disabled={!(isName && isEmail && isPassword && isPasswordConfirm && isPhone)}>회원 가입하기</button>
+                <button type='submit' className='button' disabled={!(isUserName && isEmail && isPassword && isPasswordConfirm && isPhone)}>회원 가입하기</button>
             </div>
         </form>
     );
