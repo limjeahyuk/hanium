@@ -132,11 +132,11 @@ function Signup() {
     e.preventDefault();
     try {
       await axios
-        .post('http://jfox.site/college-mate/user/join', {
+        .post('http://localhost:8080/college-mate/user/join', {
           id: username,
           password: password,
           college_name: selectedcollegeData.college,
-          email: email + emailadrass,
+          email: email,
           phone: phone,
         })
         .then((res) => {

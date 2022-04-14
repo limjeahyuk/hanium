@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './login.css';
 import BadgeIcon from '@mui/icons-material/Badge';
 import LockIcon from '@mui/icons-material/Lock';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link } from '@mui/material';
 
 function Login_r() {
   const [inputId, setInputId] = useState('');
@@ -19,7 +19,7 @@ function Login_r() {
   };
 
   const onKeyPress = (e) => {
-    if (e.key == 'Enter') {
+    if (e.key === 'Enter') {
       onClickLogin();
     }
   };
@@ -35,10 +35,10 @@ function Login_r() {
     })
       .then(function a(response) {
         console.log(response.data);
-        // if (response.data.response === 'ok') {
-        //   console.log('good');
-        //   document.location.href = '/college-mate/main';
-        // }
+        if (response.data.response === 'ok') {
+          console.log('good');
+          document.location.href = '/college-mate/main';
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -73,14 +73,14 @@ function Login_r() {
               placeholder="비밀번호를 입력하세요"
             />
           </div>
-          <a href="#">Forget Password?</a>
+          <Link to="/sign">Forget Password?</Link>
           <button className="login_btn" onClick={onClickLogin}>
             로그인
           </button>
         </div>
         <span>
           <p>New here? </p>
-          <a href="#">Create on Account</a>
+          <Link to="/sign">Create on Account</Link>
         </span>
       </div>
     </div>
