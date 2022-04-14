@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import axios from 'axios';
@@ -14,7 +13,7 @@ function Signup() {
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [email, setEmail] = useState('')
-    const [college_name, setCollege_name] = useState('');
+    const [emailaddress, setEmailaddress] = useState('');
     const [phone, setPhone] = useState('');
 
     // 오류메시지 상태저장
@@ -22,7 +21,6 @@ function Signup() {
     const [passwordMessage, setPasswordMessage] = useState('')
     const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('')
     const [emailMessage, setEmailMessage] = useState('')
-    // const [collegeMessage, setCollegeMessage] = useState('')
     const [phoneMessage, setPhoneMessage] = useState('')
 
     // 유효성 검사
@@ -30,15 +28,18 @@ function Signup() {
     const [isPassword, setIsPassword] = useState(false)
     const [isPasswordConfirm, setIsPasswordConfirm] = useState(false)
     const [isEmail, setIsEmail] = useState(false)
-    // const [isCollege, setIsCollege] = useState(false)
     const [isPhone, setIsPhone] = useState(false)
+    const [selectedcollegeData, setSelectedcolledgeData] = useState({
+        college_name: '대림',
+        college_email: '@emali.daelim.ac.kr',
+    });
     // const router = useRouter()
 
     // 이름
     const onChangeName = (event) => {
         setUserName(event.target.value)
-        if (event.target.value.length < 2 || event.target.value.length > 5) {
-            setUserNameMessage('2글자 이상 5글자 미만으로 입력해주세요.')
+        if (event.target.value.length < 1 || event.target.value.length > 8) {
+            setUserNameMessage('1글자 이상 8글자 미만으로 입력해주세요.')
             setIsUserName(false)
         } else {
             setUserNameMessage('올바른 이름 형식입니다')
@@ -62,9 +63,23 @@ function Signup() {
         }
     }
 
+    // data 안에 있는 name 찾아줌.
+    const onChangeAddress = (event) => {
+        const collegeName = event.target.value;
+        const findCollegeName = selectList.find((data) => data.college_name === collegeName);
+        setSelectedcolledgeData(findCollegeName);
+    };
+
+    useEffect(() => {
+        setEmailaddress(selectedcollegeData.college_email);
+    }, [selectedcollegeData]);
+
+    useEffect(() => {}, []);
+    
+
     //비밀번호
     const onChangePassword = e => {
-        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{10,25}$/
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/
         const passwordCurrent = e.target.value
         setPassword(passwordCurrent)
     
@@ -92,16 +107,12 @@ function Signup() {
     }
 
     //대학 드롭다운
-    // defaultValue={selectList.map((college_email)=> ({college_email}))}
     const selectList = [{ college_name:"대림", college_email:"emali.daelim.ac.kr"},{college_name: "연성", college_email:"email.email"},{college_name: "안양", college_email: "email"}];
-    // const selectList = ["대림","안양","연성"]
-    const handleChange = event => {
-        setCollege_name(event.target.value);
-    };
 
-    const MuiMenuItem = React.forwardRef((props, ref) => {
-        return <MenuItem  ref={ref} {...props} />;
-      });
+    const handleChange = event => {
+        const collegeName = selectList.find(data => data.college_name === event.target.value);
+        setSelectedcolledgeData(collegeName);
+    };
 
     //핸드폰 번호
     const handlePress = (e) => {
@@ -158,38 +169,35 @@ function Signup() {
             </div>
             <div>
                 <TextField id="standard-password-input" label="비밀번호" type="password" name="password" placeholder='' onChange={onChangePassword} value={password}/>
-                {password.length > 0 && (
-                    <span className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>
-                )}
+                {password.length > 0 && (<span className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>)}
             </div>
             <div>
                 <TextField id="standard-password-input" label="비밀번호 확인" type="password" name="passwordcofirm" placeholder='' onChange={onChangePasswordConfirm}/>
-                {passwordConfirm.length > 0 && (
-                    <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
-                )}
+                {passwordConfirm.length > 0 && (<span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>)}
             </div> 
             <div>
-                <FormControl required sx={{ m: 1, minWidth: 120 }}>
-                    <InputLabel id="demo-simple-select-required-label">대학</InputLabel>
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="selected-college-label">대학</InputLabel>
                     <Select
-                        labelId="demo-simple-select-required-label"
-                        id="demo-simple-select-required-label"
-                        value={college_name}
-                        label="college_name"
+                        labelId="selected-college-label"
+                        id="selected-college"
+                        value={selectedcollegeData.college_name}
+                        label="대학이름"
                         onChange={handleChange}
                         name="college_name"
                         >
                         {selectList.map((college_name)=> (
-                            <MenuItem value={college_name}>{college_name}</MenuItem>
+                            <MenuItem value={college_name.college_name}>{college_name.college_name}</MenuItem>
                         ))}
                     </Select>
-                    <FormHelperText>필수 조건입니다</FormHelperText>
                 </FormControl>
             </div>
             <div>
                 <TextField id="standard-basic" label="이메일" name="email" onChange={onChangeEmail} value={email} />
                 {email.length > 0 && <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
-                <button type='submit' className='emali_button' disabled>이메일 인증</button>
+
+                <TextField id="standard-basic" label="이메일주소" name="emailAddress" onChange={onChangeAddress} value={emailaddress} disabled />
+                <button type='submit' className='emali_button'>이메일 인증</button>
             </div>
             <div>
                 <TextField id="standard-basic" label="전화번호" name="phone" onChange={handlePress} value={phone} />
