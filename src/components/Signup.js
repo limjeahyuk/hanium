@@ -49,8 +49,8 @@ function Signup() {
 
     // 이메일
     const onChangeEmail = e => {
-        const emailRegex =
-          /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+        const emailRegex = 
+        /^[a-zA-Z0-9]*$/
         const emailCurrent = e.target.value
         setEmail(emailCurrent)
     
@@ -107,7 +107,7 @@ function Signup() {
     }
 
     //대학 드롭다운
-    const selectList = [{ college_name:"대림", college_email:"emali.daelim.ac.kr"},{college_name: "연성", college_email:"email.email"},{college_name: "안양", college_email: "email"}];
+    const selectList = [{ college_name:"대림", college_email:"@emali.daelim.ac.kr"},{college_name: "연성", college_email:"@email.email"},{college_name: "안양", college_email: "@email"}];
 
     const handleChange = event => {
         const collegeName = selectList.find(data => data.college_name === event.target.value);
@@ -141,11 +141,11 @@ function Signup() {
         try {
             await axios
             .post('',{
-                username : "username",
-                password : "password",
-                college_name : "college_name", 
-                email : "email",
-                phone : "phone"
+                id : username,
+                password : password,
+                collegeName : selectedcollegeData.college_name, 
+                email : email,
+                phone : phone
             })
             .then((res) => {
                 console.log('response:', res)
