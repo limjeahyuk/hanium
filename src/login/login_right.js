@@ -35,10 +35,10 @@ function Login_r() {
     })
       .then(function a(response) {
         console.log(response.data);
-        // if (response.data.response === 'ok') {
-        //   console.log('good');
-        //   document.location.href = '/college-mate/main';
-        // }
+        if (response.data.response === 'ok') {
+          console.log('good');
+          document.location.href = '/college-mate/main';
+        }
       })
       .catch(function (error) {
         console.log(error);
