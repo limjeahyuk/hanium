@@ -3,6 +3,7 @@ import './login.css';
 import BadgeIcon from '@mui/icons-material/Badge';
 import LockIcon from '@mui/icons-material/Lock';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Login_r() {
   const [inputId, setInputId] = useState('');
@@ -33,7 +34,11 @@ function Login_r() {
       params: { username: inputId, password: inputPw },
     })
       .then(function a(response) {
-        console.log(response);
+        console.log(response.data);
+        // if (response.data.response === 'ok') {
+        //   console.log('good');
+        //   document.location.href = '/college-mate/main';
+        // }
       })
       .catch(function (error) {
         console.log(error);
