@@ -1,0 +1,80 @@
+/* main header */
+.h_content {
+  width: 1290px;
+  height: 350px;
+  background-color: #0f4c81;
+  border-bottom: 1px solid #efefef;
+}
+
+.h_content > div {
+  width: 1280px;
+  margin: auto;
+}
+
+.h_content div .t_content {
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  font-size: 12px;
+  padding-top: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.h_content div .t_content > div a {
+  margin: 0 10px;
+}
+
+/* sub header */
+.sub_head {
+  width: 1920px;
+  height: 120px;
+  background-color: #0f4c81;
+}
+
+/* Link */
+.MuiLink-root {
+  color: white !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.sub_menu {
+  width: 1280px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  color: white;
+}
+
+.sub_menu div .MuiLink-root {
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.sub_head .main_menu {
+  width: 1200px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.sub_head .main_menu .MuiLink-root {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sub_head .main_menu .MuiLink-root:hover::after,
+.sub_head .main_menu .MuiLink-root:hover::before {
+  font-size: 32px;
+  transition: 0.5s;
+}
+
+.sub_head .main_menu .MuiLink-root:first-child {
+  font-size: 32px;
+}

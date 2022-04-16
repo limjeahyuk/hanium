@@ -4,10 +4,10 @@ html {
 
 .content {
   width: 1290px;
-  height: 880px;
+  height: 800px;
   border-radius: 10px;
   border: 1px solid #c9c9c9;
-  margin: 20px auto;
+  margin: 60px auto;
   background-color: #ffffff;
   box-shadow: 30px 30px 40px gray;
   display: flex;
