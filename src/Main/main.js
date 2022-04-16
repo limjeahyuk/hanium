@@ -1,5 +1,5 @@
 import React from 'react';
-import M_header from './Header/main_header';
+import M_header from '../Header/main_header';
 import './main.css';
 
 function Main() {
