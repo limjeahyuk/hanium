@@ -67,10 +67,10 @@
 .sub_head .main_menu .MuiLink-root {
   font-size: 18px;
   font-weight: bold;
+  transition: 0.5s;
 }
 
-.sub_head .main_menu .MuiLink-root:hover::after,
-.sub_head .main_menu .MuiLink-root:hover::before {
+.sub_head .main_menu .MuiLink-root:hover {
   font-size: 32px;
   transition: 0.5s;
 }

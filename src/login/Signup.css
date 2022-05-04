@@ -1,0 +1,102 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+.form {
+  font-family: 'NanumSquare';
+  width: 1290px;
+  height: 800px;
+  margin: 60px auto;
+  border: 1px solid #c9c9c9;
+  border-radius: 10px;
+  box-shadow: 30px 30px 10px rgb(155, 155, 155);
+}
+
+.form .title_box {
+  margin-top: 40px;
+}
+
+.form div {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form .common input {
+  width: 275px;
+}
+
+.form .common fieldset {
+  border-radius: 100px;
+  width: 275px;
+}
+
+.form .select_box .select fieldset {
+  border-radius: 100px;
+}
+
+.form .email_box .email {
+  margin-right: 10px;
+}
+
+.form .email_box .email input {
+  width: 100px;
+}
+
+.form .email_box .email fieldset {
+  border-radius: 100px;
+}
+
+.form .email_box .emailaddress input {
+  width: 200px;
+}
+
+.form .email_box .emailaddress fieldset {
+  width: 200px;
+  border-radius: 100px;
+}
+
+.form .Message {
+  font-size: 14px;
+  margin-bottom: 14px;
+  color: red;
+}
+
+.form .email_box .emali_button,
+.form .id_box .id_button {
+  width: 100px;
+  height: 56px;
+  border-radius: 100px;
+  background-color: #0f4c81;
+  color: #fff;
+  border: 1px solid #efefef;
+  cursor: pointer;
+}
+
+.form .button_box button {
+  width: 303px;
+  height: 56px;
+  border-radius: 100px;
+  background-color: #0f4c81;
+  color: #fff;
+  border: 1px solid #efefef;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.form .button_box button:disabled,
+.form .email_box .emali_button:disabled {
+  opacity: 0.3;
+}
+
+/* mui css */
+
+label.Mui-focused {
+  font-family: 'NanumSquare';
+  color: #0f4c81 !important;
+}
+.Mui-focused fieldset {
+  border-color: #0f4c81 !important;
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root,
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+  font-family: 'NanumSquare' !important;
+}
