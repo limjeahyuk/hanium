@@ -1,0 +1,30 @@
+.question {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.searchbox {
+  width: 580px;
+  height: 40px;
+  background-color: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 40px auto 0;
+}
+
+.searchbox input {
+  width: 80%;
+  border: none;
+  background-color: #efefef;
+}
+
+.MuiSvgIcon-root {
+  cursor: pointer;
+}
+
+.searchbox input:focus {
+  outline: none;
+}

@@ -1,25 +1,53 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
-import { Link } from '@mui/material';
 
-function Sub_header() {
+const Sub_header = () => {
+  const menus = [
+    {
+      id: 'm1',
+      url: '/buy',
+      title: '재능사기',
+    },
+    {
+      id: 'm2',
+      url: '/buy',
+      title: '재능팔기',
+    },
+    {
+      id: 'm3',
+      url: '/buy',
+      title: '재능공유',
+    },
+    {
+      id: 'm4',
+      url: '/buy',
+      title: '커뮤니티',
+    },
+    {
+      id: 'm5',
+      url: '/buy',
+      title: '재능관리',
+    },
+  ];
+
+  const menuList = menus.map((menu) => (
+    <Link to={menu.url} key={menu.id}>
+      {menu.title}
+    </Link>
+  ));
+
   return (
     <div className="sub_head">
       <div className="sub_menu">
-        <Link>Home</Link>
+        <Link to="/main">Home</Link>
         <div>
-          <Link>user</Link>|<Link>로그아웃</Link>
+          <Link to="/my">user</Link>|<Link to="/main">로그아웃</Link>
         </div>
       </div>
-      <div className="main_menu">
-        <Link>재능사기</Link>
-        <Link>재능팔기</Link>
-        <Link>재능공유</Link>
-        <Link>커뮤니티</Link>
-        <Link>재능관리</Link>
-      </div>
+      <div className="main_menu">{menuList}</div>
     </div>
   );
-}
+};
 
 export default Sub_header;
