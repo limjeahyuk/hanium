@@ -30,12 +30,13 @@
   width: 1920px;
   height: 120px;
   background-color: #0f4c81;
+  margin-bottom: 80px;
 }
 
 /* Link */
-.MuiLink-root {
-  color: white !important;
-  text-decoration: none !important;
+.sub_head a {
+  color: white;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -49,7 +50,7 @@
   color: white;
 }
 
-.sub_menu div .MuiLink-root {
+.sub_menu div a {
   margin: 0 10px;
   font-size: 12px;
 }
@@ -64,17 +65,17 @@
   align-content: center;
 }
 
-.sub_head .main_menu .MuiLink-root {
+.sub_head .main_menu a {
   font-size: 18px;
   font-weight: bold;
+  transition: 0.5s;
 }
 
-.sub_head .main_menu .MuiLink-root:hover::after,
-.sub_head .main_menu .MuiLink-root:hover::before {
+.sub_head .main_menu a:hover {
   font-size: 32px;
   transition: 0.5s;
 }
 
-.sub_head .main_menu .MuiLink-root:first-child {
+.sub_head .main_menu .hoved {
   font-size: 32px;
 }

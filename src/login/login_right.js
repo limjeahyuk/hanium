@@ -38,6 +38,8 @@ function Login_r() {
         if (response.data.response === 'ok') {
           console.log('good');
           document.location.href = '/college-mate/main';
+        } else {
+          console.log('bad');
         }
       })
       .catch(function (error) {

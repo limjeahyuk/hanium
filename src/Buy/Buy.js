@@ -1,12 +1,18 @@
 import React from 'react';
-import Sub_header from '../Header/Sub_header';
+import Subheader from '../Header/Subheader';
+import BuyGuide from './BuyGuide';
+import './Buy.css';
+import BuyPost from './BuyPost';
 
-function Buy() {
+const Buy = () => {
   return (
     <div>
-      <Sub_header />
+      <Subheader />
+      <BuyGuide />
+      <div className="bar" />
+      <BuyPost />
     </div>
   );
-}
+};
 
 export default Buy;
