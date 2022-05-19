@@ -2,34 +2,38 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 
-const Sub_header = () => {
+const Subheader = () => {
   const menus = [
     {
       id: 'm1',
-      url: '/buy',
+      url: '/college-mate/buy',
       title: '재능사기',
     },
     {
       id: 'm2',
-      url: '/buy',
+      url: '/college-mate/buy',
       title: '재능팔기',
     },
     {
       id: 'm3',
-      url: '/buy',
+      url: '/college-mate/buy',
       title: '재능공유',
     },
     {
       id: 'm4',
-      url: '/buy',
+      url: '/college-mate/buy',
       title: '커뮤니티',
     },
     {
       id: 'm5',
-      url: '/buy',
+      url: '/college-mate/buy',
       title: '재능관리',
     },
   ];
+
+  // const buyClickHandler = () => {
+  //   console.log('dd');
+  // };
 
   const menuList = menus.map((menu) => (
     <Link to={menu.url} key={menu.id}>
@@ -50,4 +54,4 @@ const Sub_header = () => {
   );
 };
 
-export default Sub_header;
+export default Subheader;

@@ -2,7 +2,7 @@ import React from 'react';
 import TabContent from './TabContent';
 import TopPoint from './TopPoint';
 
-const Buy_Guide = () => {
+const BuyGuide = () => {
   return (
     <div>
       <TabContent />
@@ -11,4 +11,4 @@ const Buy_Guide = () => {
   );
 };
 
-export default Buy_Guide;
+export default BuyGuide;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Tab_Date from './Tab_Date';
-import Tab_Job from './Tab_Job';
-import Tab_Point from './Tab_Point';
-import Tab_Work from './Tab_Work';
+import TabDate from './TabDate';
+import TabJob from './TabJob';
+import TabPoint from './TabPoint';
+import TabWork from './TabWork';
 import './TabContent.css';
 
 const TabContent = () => {
@@ -17,28 +17,24 @@ const TabContent = () => {
   };
 
   const workChangeHandler = (selectwork) => {
-    console.log(selectwork);
     setWorkTitle(selectwork);
   };
 
   const jobChangeHandler = (selectjob) => {
-    console.log(selectjob);
     setJobTitle(selectjob);
   };
 
   const dateChangeHandler = (selectdate) => {
-    console.log(selectdate);
     setDateTitle(selectdate);
   };
 
   const pointChangeHandler = (selectpoint) => {
-    console.log(selectpoint);
     setPointTitle(selectpoint);
   };
 
-  useEffect(() => {
-    console.log('렌더링');
-  });
+  // useEffect(() => {
+  //   console.log('렌더링');
+  // }, [setWorkTitle]);
 
   const tabcont = [
     {
@@ -47,7 +43,7 @@ const TabContent = () => {
           {workTitle.toString()}
         </li>
       ),
-      tabCont: <Tab_Work onChangeWork={workChangeHandler} />,
+      tabCont: <TabWork onChangeWork={workChangeHandler} />,
     },
     {
       tabTitle: (
@@ -55,7 +51,7 @@ const TabContent = () => {
           {jobTitle.toString()}
         </li>
       ),
-      tabCont: <Tab_Job onChangeJob={jobChangeHandler} />,
+      tabCont: <TabJob onChangeJob={jobChangeHandler} />,
     },
     {
       tabTitle: (
@@ -63,7 +59,7 @@ const TabContent = () => {
           {dateTitle.toString()}
         </li>
       ),
-      tabCont: <Tab_Date onChangeDate={dateChangeHandler} />,
+      tabCont: <TabDate onChangeDate={dateChangeHandler} />,
     },
     {
       tabTitle: (
@@ -71,14 +67,14 @@ const TabContent = () => {
           {pointTitle.toString()}
         </li>
       ),
-      tabCont: <Tab_Point onChangePoint={pointChangeHandler} />,
+      tabCont: <TabPoint onChangePoint={pointChangeHandler} />,
     },
   ];
 
   return (
     <div className="tab_content">
       <ul className="tabs">
-        {tabcont.map((section, index) => {
+        {tabcont.map((section) => {
           return section.tabTitle;
         })}
       </ul>

@@ -34,9 +34,9 @@
 }
 
 /* Link */
-a {
-  color: white !important;
-  text-decoration: none !important;
+.sub_head a {
+  color: white;
+  text-decoration: none;
   cursor: pointer;
 }
 

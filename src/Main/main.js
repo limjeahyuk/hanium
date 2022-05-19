@@ -1,11 +1,11 @@
 import React from 'react';
-import M_header from '../Header/main_header';
+import Mainheader from '../Header/Mainheader';
 import './main.css';
 
 function Main() {
   return (
     <div>
-      <M_header />
+      <Mainheader />
     </div>
   );
 }

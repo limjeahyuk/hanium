@@ -1,14 +1,14 @@
 import React from 'react';
 import './header.css';
 
-function M_header() {
+function Mainheader() {
   return (
     <div className="h_content">
       <div>
         <div className="t_content">
-          <a>Main</a>
+          <a href="{()=>false}">Main</a>
           <div>
-            <a>USER</a>|<a>로그아웃</a>
+            <a href="{()=>false}">USER</a>|<a href="{()=>false}">로그아웃</a>
           </div>
         </div>
       </div>
@@ -17,4 +17,4 @@ function M_header() {
   );
 }
 
-export default M_header;
+export default Mainheader;
