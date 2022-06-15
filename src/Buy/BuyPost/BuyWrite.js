@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Subheader from '../../Header/Subheader';
+import Footer from '../../Main/Footer';
 import './BuyWrite.css';
 
 const BuyWrite = () => {
@@ -152,6 +153,7 @@ const BuyWrite = () => {
 
         <button type="submit">등록하기</button>
       </form>
+      <Footer />
     </div>
   );
 };

@@ -2,13 +2,13 @@ import React from 'react';
 
 import PostboxItem from './PostboxItem';
 
-const Postbox = (props) => {
-  const expense = props.items.map((item) => (
+const Postbox = ({ items }) => {
+  const expense = items.map((item) => (
     <PostboxItem
       work={item.work}
       job={item.job}
-      cont={item.cont}
-      long={item.long}
+      cont={item.title}
+      long={item.term}
       point={item.point}
       date={item.date}
       progress={item.progress}
