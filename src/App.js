@@ -5,6 +5,7 @@ import Main from './Main/main';
 import Buy from './Buy/Buy';
 import Signup from './login/Signup';
 import BuyWrite from './Buy/BuyPost/BuyWrite';
+import BuyRead from './Buy/BuyPost/BuyRead';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/college-mate/login" element={<LoginForm />}></Route>
         <Route path="/college-mate/main" element={<Main />}></Route>
-        <Route path="/college-mate/buy" element={<Buy />} />
+        <Route path="/college-mate/buy/read" element={<Buy />} />
+        <Route path="/college-mate/buy/read/post" element={<BuyRead />} />
         <Route path="/college-mate/buy/post" element={<BuyWrite />} />
         <Route path="/college-mate/sign" element={<Signup />} />
       </Routes>

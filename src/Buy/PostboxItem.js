@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 
@@ -17,15 +18,15 @@ const PostboxItem = (props) => {
   return (
     <div className="postbox">
       <div onClick={starClickHandler}>
-        {star === true ? <StarIcon style={{ color: 'yellow' }} /> : <StarBorderIcon />}
+        {star ? <StarIcon style={{ color: 'yellow' }} /> : <StarBorderIcon />}
       </div>
       <span>{props.work}</span>
       <span>{props.job}</span>
-      <div className="postcon">
+      <Link to="/college-mate/buy/read/post" className="postcon">
         <p>{props.cont}</p>
-        <span className={props.progress === true ? 'yes' : ''}>진행중</span>
-        <span className={props.progress === true ? '' : 'yes'}>거래완료</span>
-      </div>
+        <span className={props.progress ? 'yes' : ''}>진행중</span>
+        <span className={props.progress ? '' : 'yes'}>거래완료</span>
+      </Link>
       <span>{props.long}</span>
       <span>{props.point}</span>
       <span>{props.date}</span>

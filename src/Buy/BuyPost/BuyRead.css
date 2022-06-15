@@ -1,0 +1,171 @@
+.buyread .contbox {
+  width: 1070px;
+  height: 1150px;
+  border: 1px solid #c9c9c9;
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.buyread .contbox .cont {
+  width: 870px;
+  height: 1000px;
+  margin: 50px auto;
+}
+
+.buyread .contbox .cont .title {
+  color: #0f4c81;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.buyread .contbox .cont .title span {
+  font-size: 24px;
+}
+
+.buyread .contbox .cont .title .name {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.buyread .contbox .cont .title .name span {
+  font-size: 18px;
+  margin-right: 35px;
+}
+
+.buyread .contbox .cont .title .name p {
+  font-size: 12px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.buyread .contbox .cont .bar {
+  width: 870px;
+  height: 1px;
+  line-height: 0;
+}
+
+.buyread .contbox .cont .icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 28px;
+  color: #7f7f7f;
+  margin-top: 5px;
+}
+
+.buyread .contbox .cont .icon svg:first-child {
+  font-size: 28px;
+  margin-right: 20px;
+}
+
+.buyread .contbox .cont .icon svg:last-child {
+  font-size: 28px;
+  margin-right: 5px;
+}
+
+.buyread .contbox .cont .imgbox {
+  margin-top: 20px;
+}
+
+.buyread .contbox .cont .imgbox img {
+  max-width: 870px;
+  height: auto;
+}
+
+.buyread .contbox .cont .pbox {
+  margin-top: 20px;
+  font-size: 20px;
+  height: 162px;
+  overflow: hidden;
+}
+
+.buyread .contbox .cont .pbox p {
+  margin-block-end: 0em;
+  margin-block-start: 0em;
+}
+
+.buyread .contbox .cont .likebox {
+  margin-top: 22px;
+  color: red;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.buyread .contbox .cont .likebox svg {
+  font-size: 30px;
+}
+
+.buyread .contbox .cont .likebox span {
+  color: #0f4c81;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.buyread .contbox .cont .comment {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  font-weight: bold;
+  color: #707070;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.buyread .contbox .cont .comment span {
+  font-size: 16px;
+}
+
+.buyread .contbox .cont .comment span:first-child {
+  margin-left: 26px;
+}
+
+.buyread .contbox .cont .comment span:last-child {
+  font-size: 12px;
+  margin-left: 110px;
+}
+
+.buyread .contbox .cont .commentbox {
+  height: 210px;
+}
+
+.buyread .contbox .cont .commentbox div {
+  width: 100%;
+  height: 145px;
+  border: 1px solid #707070;
+}
+
+.buyread .contbox .cont .commentbox textarea {
+  width: 800px;
+  height: 100px;
+  margin: 20px 30px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #707070;
+  resize: none;
+}
+
+.buyread .contbox .cont .commentbox textarea:focus {
+  outline: none;
+}
+
+.buyread .contbox .cont .commentbox button {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0f4c81;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  float: right;
+}

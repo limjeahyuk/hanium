@@ -6,27 +6,27 @@ const Subheader = () => {
   const menus = [
     {
       id: 'm1',
-      url: '/college-mate/buy',
+      url: '/college-mate/buy/read',
       title: '재능사기',
     },
     {
       id: 'm2',
-      url: '/college-mate/buy',
+      url: '/college-mate/buy/read',
       title: '재능팔기',
     },
     {
       id: 'm3',
-      url: '/college-mate/buy',
+      url: '/college-mate/buy/read',
       title: '재능공유',
     },
     {
       id: 'm4',
-      url: '/college-mate/buy',
+      url: '/college-mate/buy/read',
       title: '커뮤니티',
     },
     {
       id: 'm5',
-      url: '/college-mate/buy',
+      url: '/college-mate/buy/read',
       title: '재능관리',
     },
   ];
