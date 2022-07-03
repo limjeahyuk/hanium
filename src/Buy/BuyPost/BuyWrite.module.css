@@ -1,0 +1,109 @@
+.writebox {
+  width: 1068px;
+  height: 1025px;
+  border-radius: 10px;
+  border: 1px solid #c9c9c9;
+  margin: auto;
+}
+
+.writebox .condition {
+  width: 950px;
+  margin: auto;
+}
+
+.condition h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #0f4c81;
+  margin-block-start: 29px;
+  margin-block-end: 20px;
+}
+
+.boxbar {
+  width: 950px;
+  border: 1px solid #c9c9c9;
+}
+
+.condition .classbox {
+  margin-top: 25px;
+  font-size: 18px;
+  color: #707070;
+}
+
+.condition .classbox span {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0f4c81;
+}
+
+.condition .classbox .class {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.condition .classbox .class:first-child {
+  margin-top: 0px;
+}
+
+/* postbox */
+
+.buypostbox h3 {
+  font-weight: bold;
+  margin-block-start: 45px;
+}
+
+.condition .buypostbox span {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0f4c81;
+  margin-right: 100px;
+}
+
+.condition .buypostbox .posttitle {
+  margin-top: 25px;
+}
+
+.posttitle input,
+.postcont textarea {
+  width: 700px;
+  border: 1px solid #c9c9c9;
+  font-size: 18px;
+  color: #707070;
+}
+
+.posttitle input {
+  height: 50px;
+}
+
+.posttitle input:focus {
+  outline: none;
+}
+
+.postcont {
+  display: flex;
+  margin-top: 30px;
+}
+
+.postcont textarea {
+  height: 300px;
+  resize: none;
+  line-height: 30px;
+}
+
+.postcont textarea:focus {
+  outline: none;
+}
+
+.writebox button {
+  background-color: #0f4c81;
+  width: 300px;
+  height: 65px;
+  border-radius: 10px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+
+  margin: 55px auto;
+}

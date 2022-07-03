@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import Select from '@mui/material/Select';
+import Autocomplete from '@mui/material/Autocomplete';
 
 import './css/Signup.css';
 
@@ -16,6 +17,7 @@ function Signup() {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [email, setEmail] = useState('');
   const [emailaddress, setEmailaddress] = useState('');
+  const [emailright, setEmailRight] = useState('');
   const [phone, setPhone] = useState('');
 
   // 오류메시지 상태저장
@@ -30,6 +32,7 @@ function Signup() {
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
   const [isEmail, setIsEmail] = useState(false);
+  const [isEmailRight, setIsEmailRight] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
   const [selectedcollegeData, setSelectedcolledgeData] = useState('');
   // const router = useRouter()
@@ -60,6 +63,10 @@ function Signup() {
       setEmailMessage('');
       setIsEmail(true);
     }
+  };
+
+  const onChangeRight = (e) => {
+    setEmailRight(e.target.value);
   };
 
   // data 안에 있는 name 찾아줌.
@@ -112,8 +119,22 @@ function Signup() {
   ];
 
   const handleChange = (event) => {
-    const collegeName = selectList.find((data) => data.college_name === event.target.value);
-    setSelectedcolledgeData(collegeName);
+    if (event.type === 'click') {
+      const collegeName = selectList.find((data) => data.college_name === event.target.textContent);
+      setSelectedcolledgeData(collegeName);
+      console.log(event);
+    }
+
+    // 키보드로 했을때는 지금 난리가 났음 엔터 처리해줘야함.
+    // if (event.keyCode === 13) {
+    //   const ccc = event.target.value;
+    //   const collegeName = selectList.find((data) => data.college_name == ccc);
+    // }
+    // if (event.keyCode === 12) {
+    //   console.log(event);
+    //   const collegeName = selectList.find((data) => data.college_name === event.target.value);
+    //   setSelectedcolledgeData(collegeName);
+    // }
   };
 
   //핸드폰 번호
@@ -140,21 +161,21 @@ function Signup() {
   }, [phone]);
 
   // 중복체크
-  const idCheck = () => {
+  const idCheck = (e) => {
     e.preventDefault();
     axios({
       url: `http://localhost:8080/college-mate/user/join/${username}/idcheck`,
       method: 'post',
-      data: null,
     })
       .then((res) => {
         if (res.data === true) {
           //중복체크 버튼 비활성화
           setIsUserName(true);
-          setUserNameMessage('사용 가능합니다.');
+          setUserNameMessage('중복입니다.');
           // 가능합니다.
         } else {
           setIsUserName(false);
+          setUserNameMessage('사용 가능합니다.');
         }
       })
       .catch((res) => {
@@ -162,20 +183,36 @@ function Signup() {
       });
   };
 
-  const emailCheck = () => {
+  const emailCheck = (e) => {
     e.preventDefault();
     axios({
       url: `http://localhost:8080/college-mate/user/join/${email + emailaddress}/emailcheck`,
       method: 'post',
-      data: null,
     })
       .then((res) => {
         if (res.data === true) {
-          // 사용가능합니다 + 인증코드
-        } else {
           // 중복입니다.
+          setEmailMessage('중복입니다');
+          setIsEmail(false);
+        } else {
+          // 사용가능합니다 + 인증코드
+          setEmailMessage('');
+          setIsEmail(true);
         }
       })
+      .catch((res) => {
+        console.log(res);
+      });
+  };
+
+  // 인증번호 체크
+  const rightCheck = (e) => {
+    e.preventDefault();
+    axios({
+      url: '',
+      method: 'post',
+    })
+      .then((res) => {})
       .catch((res) => {
         console.log(res);
       });
@@ -198,134 +235,177 @@ function Signup() {
         },
       });
       // 성공했을 시
-      // router.push('/college-mate/login');
+      this.props.history.push('/college-mate/login');
     } catch (err) {
       console.error(err);
     }
   };
+  // 촬영 전용
+  const clickHandler = () => {
+    document.location.href = '/college-mate/login';
+  };
 
   return (
     <form onSubmit={onSubmit} className='form'>
-      <div className='title_box'>
-        <h3 className='title'>회원가입</h3>
-      </div>
-      <div className='id_box'>
-        <TextField
-          id='standard-basic'
-          label='아이디'
-          className='id common'
-          onChange={onChangeName}
-          value={username || ''}
-        />
-        <div className='Message'>
-          {username.length > 0 && (
-            <span className={`message ${isUserName ? 'success' : 'error'}`}>{userNameMessage}</span>
-          )}
+      <div className='sign_wrap'>
+        <div className='title_box'>
+          <h3 className='title'>회원가입</h3>
         </div>
-        <button type='submit' className='id_button' onClick={idCheck} disabled={!isUserName}>
-          중복 체크
-        </button>
-      </div>
-      <div className='password_box'>
-        <TextField
-          id='standard-password-input'
-          label='비밀번호'
-          className='password common'
-          type='password'
-          placeholder=''
-          onChange={onChangePassword}
-          value={password || ''}
-        />
-        <div className='Message'>
-          {password.length > 0 && (
-            <span className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>
-          )}
-        </div>
-      </div>
-      <div className='passwordconfirm_box'>
-        <TextField
-          id='standard-password-input'
-          label='비밀번호 확인'
-          className='passwordconfirm common'
-          type='password'
-          placeholder=''
-          onChange={onChangePasswordConfirm}
-        />
-        <div className='Message'>
-          {passwordConfirm.length > 0 && (
-            <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>
-              {passwordConfirmMessage}
-            </span>
-          )}
-        </div>
-      </div>
-      <div className='select_box'>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
+        <div className='form_box'>
+          <div className='id_box'>
+            <TextField
+              id='standard-basic'
+              label='아이디'
+              className='id common'
+              onChange={onChangeName}
+              value={username || ''}
+            />
+            <button type='submit' className='id_button' onClick={idCheck} disabled={!isUserName}>
+              중복 체크
+            </button>
+            <div className='Message'>
+              {username.length > 0 && (
+                <span className={`message ${isUserName ? 'success' : 'error'}`}>
+                  {userNameMessage}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className='password_box'>
+            <TextField
+              id='standard-password-input'
+              label='비밀번호'
+              className='password common'
+              type='password'
+              placeholder=''
+              onChange={onChangePassword}
+              value={password || ''}
+            />
+            <div className='Message'>
+              {password.length > 0 && (
+                <span className={`message ${isPassword ? 'success' : 'error'}`}>
+                  {passwordMessage}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className='passwordconfirm_box'>
+            <TextField
+              id='standard-password-input'
+              label='비밀번호 확인'
+              className='passwordconfirm common'
+              type='password'
+              placeholder=''
+              onChange={onChangePasswordConfirm}
+            />
+            <div className='Message'>
+              {passwordConfirm.length > 0 && (
+                <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>
+                  {passwordConfirmMessage}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className='select_box'>
+            {/* <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
           <InputLabel id='selected-college-label'>대학교</InputLabel>
           <Select
             labelId='selected-college-label'
             id='selected-college'
             label='대학교'
             className='select'
-            onChange={handleChange}
+            onChange={onChangeAddress}
             value={selectedcollegeData.college_name || ''}
           >
             {selectList.map((college_name) => (
               <MenuItem value={college_name.college_name}>{college_name.college_name}</MenuItem>
             ))}
           </Select>
-        </FormControl>
-      </div>
-      <div className='email_box'>
-        <TextField
-          id='standard-basic'
-          label='이메일'
-          className='email'
-          onChange={onChangeEmail}
-          value={email || ''}
-        />
-        <TextField
-          id='standard-basic'
-          label='이메일주소'
-          className='emailaddress'
-          onChange={onChangeAddress}
-          value={emailaddress || ''}
-          disabled
-        />
-        <button type='submit' className='emali_button' onClick={emailCheck}>
-          이메일 인증
-        </button>
-        <div className='Message'>
-          {email.length > 0 && (
-            <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>
-          )}
+        </FormControl> */}
+            <Autocomplete
+              id='free-solo-demo'
+              className='select'
+              value={selectedcollegeData.college_name || ''}
+              onChange={handleChange}
+              freeSolo
+              options={selectList.map((option) => option.college_name)}
+              renderInput={(params) => <TextField {...params} label='대학교' />}
+            />
+          </div>
+          <div className='email_box'>
+            <TextField
+              id='standard-basic'
+              label='이메일'
+              className='email'
+              onChange={onChangeEmail}
+              value={email || ''}
+            />
+            <TextField
+              id='standard-basic'
+              label='이메일주소'
+              className='emailaddress'
+              onChange={onChangeAddress}
+              value={emailaddress || ''}
+              disabled
+            />
+            <button type='submit' className='emali_button' onClick={emailCheck} disabled={!isEmail}>
+              이메일 인증
+            </button>
+            <div className='Message'>
+              {email.length > 0 && (
+                <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>
+              )}
+            </div>
+            <div className='address_confirm'>
+              {isEmail === true && (
+                <TextField
+                  id='standard-basic'
+                  label='인증번호'
+                  className='email_right'
+                  onChange={onChangeRight}
+                  value={emailright || ''}
+                />
+              )}
+              {isEmail === true && (
+                <button
+                  type='submit'
+                  className='emali_button'
+                  onClick={rightCheck}
+                  disabled={!isEmailRight}
+                >
+                  인증번호 확인
+                </button>
+              )}
+            </div>
+          </div>
+          <div className='phone_box'>
+            <TextField
+              id='standard-basic'
+              label='전화번호'
+              className='phone common'
+              onChange={handlePress}
+              value={phone}
+            />
+            <div className='Message'>
+              {phone.length > 0 && (
+                <span className={`message ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='phone_box'>
-        <TextField
-          id='standard-basic'
-          label='전화번호'
-          className='phone common'
-          onChange={handlePress}
-          value={phone}
-        />
-        <div className='Message'>
-          {phone.length > 0 && (
-            <span className={`message ${isPhone ? 'success' : 'error'}`}>{phoneMessage}</span>
-          )}
+        <div className='button_box'>
+          <button
+            type='submit'
+            className='button'
+            disabled={!(isUserName && isEmail && isPassword && isPasswordConfirm && isPhone)}
+            /*촬영 전용 */ onClick={clickHandler}
+          >
+            회원 가입
+          </button>
         </div>
-      </div>
-      <div className='button_box'>
-        <button
-          type='submit'
-          className='button'
-          disabled={!(isUserName && isEmail && isPassword && isPasswordConfirm && isPhone)}
-        >
-          회원 가입
-        </button>
-      </div>
-      <div className='link_login'>
-        <Link to='/college-mate/login'>로그인화면으로</Link>
+        <div className='link_login'>
+          <Link to='/college-mate/login'>로그인화면으로</Link>
+        </div>
       </div>
     </form>
   );

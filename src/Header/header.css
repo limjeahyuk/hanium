@@ -1,0 +1,81 @@
+/* main header */
+.h_content {
+  width: 1290px;
+  height: 350px;
+  background-color: #0f4c81;
+  border-bottom: 1px solid #efefef;
+}
+
+.h_content > div {
+  width: 1280px;
+  margin: auto;
+}
+
+.h_content div .t_content {
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  font-size: 12px;
+  padding-top: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.h_content div .t_content > div a {
+  margin: 0 10px;
+}
+
+/* sub header */
+.sub_head {
+  width: 1920px;
+  height: 120px;
+  background-color: #0f4c81;
+  margin-bottom: 80px;
+}
+
+/* Link */
+.sub_head a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sub_menu {
+  width: 1280px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  color: white;
+}
+
+.sub_menu div a {
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.sub_head .main_menu {
+  width: 1200px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.sub_head .main_menu a {
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.sub_head .main_menu a:hover {
+  font-size: 32px;
+  transition: 0.5s;
+}
+
+.sub_head .main_menu .hoved {
+  font-size: 32px;
+}

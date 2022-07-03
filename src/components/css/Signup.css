@@ -7,16 +7,24 @@
   margin: 60px auto;
   border: 1px solid #c9c9c9;
   border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
   box-shadow: 30px 30px 10px rgb(155, 155, 155);
+  background-color: #fff;
 }
 
 .form .title_box {
-  margin-top: 40px;
+  margin: 40px 0;
+  text-align: center;
 }
 
-.form div {
-  text-align: center;
-  margin-bottom: 10px;
+.form .sign_wrap .form_box {
+  margin-left: 349px;
+}
+
+.form .sign_wrap {
+  width: 1000px;
+  margin: 0 auto;
 }
 
 .form .common input {
@@ -24,12 +32,21 @@
 }
 
 .form .common fieldset {
-  border-radius: 100px;
+  border-radius: 10px;
   width: 275px;
 }
 
+.form .id_box,
+.form .password_box,
+.form .passwordconfirm_box,
+.form .email_box,
+.form .phone_box {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
 .form .select_box .select fieldset {
-  border-radius: 100px;
+  border-radius: 10px;
 }
 
 .form .email_box .email {
@@ -41,21 +58,22 @@
 }
 
 .form .email_box .email fieldset {
-  border-radius: 100px;
+  border-radius: 10px;
 }
 
 .form .email_box .emailaddress input {
   width: 200px;
 }
 
-.form .email_box .emailaddress fieldset {
+.form .email_box .emailaddress fieldset,
+.form .email_box .email_right fieldset {
   width: 200px;
-  border-radius: 100px;
+  border-radius: 10px;
 }
 
 .form .Message {
   font-size: 14px;
-  margin-bottom: 14px;
+  margin: 20px 0;
   color: red;
 }
 
@@ -63,17 +81,21 @@
 .form .id_box .id_button {
   width: 100px;
   height: 56px;
-  border-radius: 100px;
+  border-radius: 10px;
   background-color: #0f4c81;
   color: #fff;
   border: 1px solid #efefef;
   cursor: pointer;
 }
 
+.form .button_box {
+  text-align: center;
+}
+
 .form .button_box button {
   width: 303px;
   height: 56px;
-  border-radius: 100px;
+  border-radius: 10px;
   background-color: #0f4c81;
   color: #fff;
   border: 1px solid #efefef;
@@ -82,8 +104,25 @@
 }
 
 .form .button_box button:disabled,
-.form .email_box .emali_button:disabled {
+.form .id_box button:disabled,
+.form .email_box button:disabled {
   opacity: 0.3;
+}
+
+.select_box {
+  margin-bottom: 20px;
+}
+
+.select_box .select {
+  width: 200px;
+}
+
+.link_login {
+  text-align: center;
+}
+
+.address_confirm {
+  margin-bottom: 20px;
 }
 
 /* mui css */

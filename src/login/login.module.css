@@ -1,0 +1,123 @@
+html {
+  background-color: #edeef0;
+}
+
+.content {
+  width: 1290px;
+  height: 800px;
+  border-radius: 10px;
+  border: 1px solid #c9c9c9;
+  margin: 60px auto;
+  background-color: #ffffff;
+  box-shadow: 30px 30px 40px gray;
+  display: flex;
+}
+
+.content_l {
+  width: 780px;
+  height: 100%;
+  border-right: 1px solid #c9c9c9;
+}
+.content_r {
+  width: 510px;
+  height: 870px;
+  position: relative;
+}
+
+/* login_l */
+.big {
+  display: flex;
+}
+.big .icon {
+  width: 100px;
+  height: 100px;
+  margin-right: 50px;
+}
+.big h2 {
+  font-size: 36px;
+  color: #0f4c81;
+  font-weight: 200;
+}
+
+/* login_r */
+.loginForm {
+  width: 100%;
+  height: 450px;
+  position: absolute;
+  top: 220px;
+}
+.loginForm h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0f4c81;
+  margin-left: 30px;
+  margin-bottom: 70px;
+}
+.l_content .Form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.l_content .Form div {
+  width: 275px;
+  height: 50px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(112, 112, 112, 0.28);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+}
+.l_content .Form div .icon {
+  margin-left: 30px;
+  opacity: 0.4;
+}
+.l_content .Form div .box {
+  width: 150px;
+  height: 30px;
+  border: none;
+  margin-left: 30px;
+  text-align: center;
+}
+
+.l_content .Form div input:focus {
+  outline: none;
+}
+
+.l_content .Form a {
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.l_content .Form .login_btn {
+  width: 275px;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 100px;
+  background-color: #0f4c81;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+}
+/* 
+.l_content .Form .login_btn input {
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #0f4c81;
+  color: #ffffff;
+} */
+
+.l_content span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.l_content span a {
+  margin-left: 10px;
+  text-decoration: none;
+}
